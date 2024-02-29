@@ -9,8 +9,8 @@ class LevelController extends Controller
 {
     public function index()
     {   
-        $key = 'ADM';
-        $row = DB::select('select * from m_level where level_kode = ?', [$key]);
+        DB::insert('INSERT INTO m_level(level_kode, level_nama, created_at) VALUES (?, ?, ?)', ['CUS', 'Pelanggan', now()]);
+        $row = DB::select('select * from m_level');
         return view('level', ['data' => $row]);
     }
 }
