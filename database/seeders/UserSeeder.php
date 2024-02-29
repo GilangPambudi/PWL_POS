@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
                 'username' => 'admin',
                 'nama' => 'Administrator',
                 'password' => Hash::make('12345'),
+                'created_at' => now(),
             ],
             [
                 'user_id' => 2,
@@ -28,6 +29,7 @@ class UserSeeder extends Seeder
                 'username' => 'manager',
                 'nama' => 'Manager',
                 'password' => Hash::make('12345'),
+                'created_at' => now(),
             ],
             [
                 'user_id' => 3,
@@ -35,6 +37,7 @@ class UserSeeder extends Seeder
                 'username' => 'supervisor',
                 'nama' => 'Supervisor',
                 'password' => Hash::make('12345'),
+                'created_at' => now(),
             ],
             [
                 'user_id' => 4,
@@ -42,6 +45,7 @@ class UserSeeder extends Seeder
                 'username' => 'kasir',
                 'nama' => 'Kasir/Staff',
                 'password' => Hash::make('12345'),
+                'created_at' => now(),
             ],
         ];
         DB::table('m_user')->insert($data);
