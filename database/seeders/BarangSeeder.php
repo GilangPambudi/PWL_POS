@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class BarangSeeder extends Seeder
 {
@@ -81,6 +82,9 @@ class BarangSeeder extends Seeder
                 'kategori_id' => 4,
                 'barang_kode' => 'SBK-002',
                 'barang_nama' => 'Minyak Goreng',
+                'harga_jual' => 15000,
+                'harga_beli' => 12000,
+                'created_at' => now(), 
             ],
             [
                 'barang_id' => 9,
@@ -127,7 +131,7 @@ class BarangSeeder extends Seeder
                 'harga_beli' => 2000,
                 'created_at' => now(),
             ],
-            
         ];
+        DB::table('m_barang')->insert($data);
     }
 }
