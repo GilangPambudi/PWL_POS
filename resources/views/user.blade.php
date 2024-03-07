@@ -12,18 +12,12 @@
                 <th>Nama</th>
                 <th>ID Level Pengguna</th>
             </tr>
-            @forelse ($data as $d)
-                <tr>
-                    <td>{{ $d->user_id }}</td>
-                    <td>{{ $d->username}}</td>
-                    <td>{{ $d->nama}}</td>
-                    <td>{{ $d->level_id}}</td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="3">Tidak ada data</td>
-                </tr>
-            @endforelse
+            <tr>
+                <td>{{ $data->user_id }}</td>
+                <td>{{ $data->username}}</td>
+                <td>{{ $data->nama}}</td>
+                <td>{{ $data->level_id}}</td>
+            </tr>
         </table>
     </body>
 </html>
