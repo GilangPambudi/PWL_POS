@@ -2,16 +2,18 @@
 {{-- Customize layout sections --}}
 @section('subtitle', 'Kategori')
 @section('content_header_title', 'Kategori')
-@section('content_header_subtitle', 'Create')
+@section('content_header_subtitle', 'Edit')
 {{-- Content body: main page content --}}
 @section('content')
     <div class="container">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Buat kategori baru</h3>
+                <h3 class="card-title">Edit kategori </h3>
             </div>
 
-            <form method="post" action="../kategori">
+            <form method="post" action={{ url('kategori/' . $data->kategori_id . '/edit') }}>
+                @csrf
+                @method('PUT')
                 <div class="card-body">
                     <div class="form-group">
                         <label for="kodeKategori">Kode Kategori</label>

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\BarangModel;
+use Illuminate\Database\Query\Builder;
 
 class KategoriModel extends Model
 {
