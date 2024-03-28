@@ -45,8 +45,8 @@ class KategoriDataTable extends DataTable
             ->setTableId('kategori-table')
             ->columns($this->getColumns())
             ->minifiedAjax()->dom('Bfrtip')
-            ->orderBy(0, 'asc') 
-            ->selectStyleSingle()
+            ->orderBy(0) 
+            // ->selectStyleSingle()
             ->buttons([
                 Button::make('excel'),
                 Button::make('csv'),
