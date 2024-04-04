@@ -1,35 +1,30 @@
-@extends('layouts.app')
-{{-- Customize layout sections --}}
-@section('subtitle', 'Kategori')
-@section('content_header_title', 'Kategori')
-@section('content_header_subtitle', 'Edit')
-{{-- Content body: main page content --}}
+@extends('layouts.template')
+
 @section('content')
-    <div class="container">
-        <div class="card card-primary">
-            <div class="card-header">
-                <h3 class="card-title">Edit kategori </h3>
-            </div>
-
-            <form method="post" action={{ url('kategori/' . $data->kategori_id . '/edit') }}>
-                @csrf
-                @method('PUT')
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="kodeKategori">Kode Kategori</label>
-                        <input type="text" class="form-control" id="kodeKategori" name="kodeKategori" placeholder="Masukkan Kode Kategori">
-                    </div>
-                    <div class="form-group">
-                        <label for="namaKategori">Nama Kategori</label>
-                        <input type="text" class="form-control" id="namaKategori" name="namaKategori" placeholder="Masukkan Nama Kategori">
-                    </div>
-                </div>
-
-                <div class="card-footer text-right">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
+    <div class="card card-outline card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Edit Kategori</h3>
         </div>
+        <form method="POST" action="{{ url('/kategori/' . $kategori->kategori_id) }}" class="form-horizontal">
+            @csrf
+            @method('PUT')
+            <div class="card-body">
+                @if (session('error'))
+                    <div class="alert alert-danger">{{ session('error') }}</div>
+                @endif
+                <div class="form-group">
+                    <label for="kategori_kode">Kode Kategori</label>
+                    <input type="text" class="form-control" id="kategori_kode" name="kategori_kode" value="{{ $kategori->kategori_kode }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="kategori_nama">Nama Kategori</label>
+                    <input type="text" class="form-control" id="kategori_nama" name="kategori_nama" value="{{ $kategori->kategori_nama }}" required>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{{ url('kategori') }}" class="btn btn-default">Kembali</a>
+            </div>
+        </form>
     </div>
 @endsection
-            
