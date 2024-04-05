@@ -21,6 +21,7 @@ return new class extends Migration
 
             // foreign key
             $table->foreign('barang_id')->references('barang_id')->on('m_barang');
+            $table->foreign('user_id')->references('user_id')->on('m_user');
         });
     }
 

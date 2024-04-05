@@ -10,50 +10,49 @@ use Yajra\DataTables\Facades\DataTables;
 
 class StokController extends Controller
 {
-    public function index(){
-        $breadcrumb = (object)[
-            'title' => 'Daftar Stok',
-            'list' => ['Home', 'Stok']
+    public function index()
+    {
+        $breadcrumb = (object) [
+            'title' => 'Daftar Stok Barang',
+            'list' => ['Home', 'Stok Barang']
         ];
 
-        $page = (object)[
-            'title' => 'Daftar stok yang terdaftar dalam sistem'
+        $page = (object) [
+            'title' => 'Daftar Stok Barang',
         ];
 
-        $activeMenu = 'stok'; //set menu yang sedang aktif
+        $activeMenu = 'stok';
 
-        $barang = BarangModel::all(); //ambil semua data barang
+        $barang = BarangModel::all();
+        $user = UserModel::all();
 
-        $user = UserModel::all(); //ambil semua data user
-
-        return view('stok.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'barang' => $barang, 'user' => $user, 'activeMenu' => $activeMenu]);
+        return view('stok.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu, 'barang' => $barang, 'user' => $user]);
     }
 
     public function list(Request $request)
     {
-        $stok = StokModel::select('stok_id', 'stok_tanggal', 'stok_jumlah', 'barang_id', 'user_id')
+        $stoks = StokModel::select('stok_id', 'stok_tanggal', 'stok_jumlah', 'user_id', 'barang_id')
             ->with(['user', 'barang']);
 
         if ($request->barang_id) {
-            $stok->where('barang_id', $request->barang_id);
+            $stoks->where('barang_id', $request->barang_id);
         }
 
         if ($request->user_id) {
-            $stok->where('user_id', $request->user_id);
+            $stoks->where('user_id', $request->user_id);
         }
 
-        return DataTables::of($stok)
+        return DataTables::of($stoks)
             ->addIndexColumn()
-            ->addColumn('action', function ($stok) {
-                $btn  = '<a href="' . url('/stok/' . $stok->stok_id) . '"class="btn btn-info btn-sm">Detail</a> ';
-                $btn .= '<a href="' . url('/stok/' . $stok->stok_id . '/edit') . '"class="btn btn-warning btn-sm">Edit</a> ';
-                $btn .= '<form class="d-inline-block" method="POST" action="' .
-                    url('/stok/' . $stok->stok_id) . '">'
+            ->addColumn('aksi', function ($stok) {
+                $btn  = '<a href="' . url('/stok/' . $stok->stok_id) . '" class="btn btn-info btn-sm">Detail</a> ';
+                $btn .= '<a href="' . url('/stok/' . $stok->stok_id . '/edit') . '" class="btn btn-warning btn-sm">Edit</a> ';
+                $btn .= '<form class="d-inline-block" method="POST" action="' . url('/stok/' . $stok->stok_id) . '">'
                     . csrf_field() . method_field('DELETE') .
-                    '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Apakah Anda yakit menghapus data ini?\');">Hapus</button></form>';
+                    '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus</button></form>';
                 return $btn;
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['aksi'])
             ->make(true);
     }
 }
