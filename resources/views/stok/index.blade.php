@@ -20,7 +20,8 @@
                     <tr>
                         <th>ID</th>
                         <th>ID Barang</th>
-                        <th>ID User</th>
+                        <th>Nama Barang</th>
+                        <th>User</th>
                         <th>Tanggal Stok</th>
                         <th>Jumlah Stok</th>
                         <th>Aksi</th>
@@ -42,13 +43,14 @@
                     "type": "POST",
                     "data": function(d) {
                         d.barang_id = $('#barang_id').val();
-                        d.user_id = $('#user_id').val();
+                        d.user_id = $('#nama').val();
                     }
                 },
                 columns: [
                     { data: "DT_RowIndex", className: "text-center", orderable: false, searchable: false },
                     { data: "barang.barang_id", className: "", orderable: false, searchable: false },
-                    { data: "user.user_id", className: "", orderable: false, searchable: false },
+                    { data: "barang.barang_nama", className: "", orderable: false, searchable: false },
+                    { data: "user.nama", className: "", orderable: false, searchable: false },
                     { data: "stok_tanggal", className: "", orderable: true, searchable: true },
                     { data: "stok_jumlah", className: "", orderable: true, searchable: true },
                     { data: "aksi", className: "", orderable: false, searchable: false }
@@ -57,7 +59,7 @@
             $('#barang_id').on('change', function() {
                 dataUser.ajax.reload();
             });
-            $('#user_id').on('change', function() {
+            $('#nama').on('change', function() {
                 dataUser.ajax.reload();
             });
         });

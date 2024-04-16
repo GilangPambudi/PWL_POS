@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <a href="{{ url('kategori') }}" class="btn btn-sm btn-default mt2">Kembali</a>
+            <a href="{{ url('kategori') }}" class="btn btn-primary">Kembali</a>
         </div>
     </div>
 @endsection

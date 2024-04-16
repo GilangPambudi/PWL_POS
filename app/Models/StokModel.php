@@ -10,7 +10,7 @@ class StokModel extends Model
     protected $table = 't_stok';
     protected $primaryKey = 'stok_id';
 
-    protected $fillable = ['stok_tanggal', 'stok_jumlah', ];
+    protected $fillable = ['barang_id', 'user_id', 'stok_tanggal', 'stok_jumlah', ];
 
     public function user() {
         return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
