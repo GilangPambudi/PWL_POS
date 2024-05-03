@@ -16,7 +16,7 @@
         <div class="alert alert-error">{{ session('error') }}</div>
       @endif
       <div class="row">
-        {{-- <div class="col-md-12">
+        <div class="col-md-12">
           <div class="form-group row">
             <label class="col-1 control-label col-form-label">Filter: </label>
             <div class="col-3">
@@ -29,7 +29,7 @@
               <small class="form-text text-muted">Kategori Barang</small>
             </div>
           </div>
-        </div> --}}
+        </div>
       </div>
       <table class="table-bordered table-striped table-hover table-sm table" id="table_barang">
         <thead>

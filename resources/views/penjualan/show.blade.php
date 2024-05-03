@@ -3,7 +3,7 @@
 @section('content')
     <div class="card card-outline card-primary">
         <div class="card-header">
-            <h3 class="card-title">Detail Barang</h3>
+            <h3 class="card-title">Detail Penjualan</h3>
         </div>
         <div class="card-body">
             <div class="form-group">
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <a href="{{ url('stok') }}" class="btn btn-primary">Kembali</a>
+            <a href="{{ url('penjualan') }}" class="btn btn-primary">Kembali</a>
         </div>
     </div>
 @endsection
