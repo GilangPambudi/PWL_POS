@@ -6,8 +6,19 @@ use Illuminate\Http\Request;
 
 class ManagerController extends Controller
 {
-    public function index()
-    {
-        return view('manager');
+    public function index(){
+        $breadcrumb = (object)[
+            'title' => 'Manager',
+            'list' => ['Home', 'Manager']
+        ];
+
+        $page = (object)[
+            'title' => 'Manager Page'
+        ];
+
+        $activeMenu = 'Manager'; //set menu yang sedang aktif
+
+
+        return view('manager', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu]);
     }
 }

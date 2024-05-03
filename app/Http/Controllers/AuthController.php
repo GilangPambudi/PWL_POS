@@ -24,14 +24,16 @@ class AuthController extends Controller
     }
 
     public function proses_login(Request $request)
-    {
+    {   
+        
         $request->validate([
             'username' => 'required',
             'password' => 'required',
         ]);
 
+        
         $credential = $request->only('username', 'password');
-
+        
         if (Auth::attempt($credential)) {
             $user = Auth::user();
             if ($user->level_id == 1) {
